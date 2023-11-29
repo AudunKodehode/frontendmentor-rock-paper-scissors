@@ -1,0 +1,404 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  font-family: "Barlow Semi Condensed", sans-serif;
+
+  -webkit-user-select: none;
+  -khtml-user-select: none;
+  -moz-user-select: -moz-none;
+  -o-user-select: none;
+  user-select: none;
+  border: 2px solid green;
+}
+#root {
+  height: 100vh;
+  background: radial-gradient(
+    circle at top,
+    hsl(214, 47%, 23%),
+    hsl(237, 49%, 15%)
+  );
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  justify-content: center;
+}
+button {
+  border: none;
+}
+.topcontainer {
+  width: 730px;
+  height: 160px;
+  border: 5px solid rgba(255, 255, 255, 0.776);
+  border-radius: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding-left: 20px;
+  padding-right: 20px;
+  margin-top: 30px;
+}
+.topcontainer img {
+  width: 162px;
+  height: 99px;
+}
+.scorecontainer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background: #f8f8f8;
+  width: 140px;
+  height: 110px;
+  border-radius: 10px;
+  justify-content: center;
+}
+.scorecontainer h3 {
+  color: hsl(229, 64%, 46%);
+}
+.scorecontainer h1 {
+  color: hsl(229, 25%, 31%);
+  font-weight: 700;
+  font-size: 50px;
+}
+.rulesModal {
+  position: fixed;
+  width: 460px;
+  height: 380px;
+  background: #f0f0f0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 20;
+  border-radius: 6px;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+.modalText {
+  position: inherit;
+  top: 0;
+  left: 0;
+  margin: 24px;
+}
+.modalImage {
+  position: inherit;
+  top: 80px;
+}
+.closeModal {
+  position: fixed;
+  right: 0;
+  top: 0;
+  margin: 24px;
+  cursor: pointer;
+
+}
+.triangleBg {
+  background-image: url("src/images/bg-triangle.svg");
+  background-repeat: no-repeat;
+  background-position: center;
+  width: 100vw;
+  height: 800px;
+  position: fixed;
+  top: 130px;
+}
+.choices {
+  z-index: 1;
+
+  width: 800px;
+  height: 800px;
+  display: flex;
+  justify-content: center;
+  position: relative;
+}
+.rock {
+  position: relative;
+  top: 360px;
+}
+.paper {
+  position: relative;
+  top: 120px;
+  left: 150px;
+}
+.rulesButton {
+  position: fixed;
+  bottom: 0;
+  right: 0;
+  margin: 50px;
+  padding: 12px 40px;
+  background: none;
+  border: 2px solid white;
+  border-radius: 10px;
+  color: white;
+  font-size: 20px;
+  cursor: pointer;
+}
+.scissors {
+  position: relative;
+  top: 120px;
+  left: 450px;
+}
+.choice {
+  width: 200px;
+  height: 200px;
+  border-radius: 150px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  transition: 0.3s;
+  position: absolute;
+}
+.choice:hover {
+  transform: scale(1.1);
+}
+.choice:active {
+  transform: scale(1);
+}
+.choicecontainer {
+  width: 75%;
+  height: 75%;
+  border-radius: 1000px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: #e1e3e0;
+}
+.resultsContainer {
+  position: fixed;
+  width: 260px;
+  height: 140px;
+  justify-content: center;
+  align-items: center;
+  top: 58%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  border-radius: 20px;
+  z-index: 2;
+  flex-direction: column;
+  gap: 15px;
+  display: flex;
+  visibility: hidden;
+}
+.resultsContainer h1 {
+  color: white;
+  font-size: 50px;
+}
+.playAgainButton {
+  background: #f8f8f8;
+  width: 200px;
+  height: 50px;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 16px;
+}
+.playAgainButton:hover {
+  color: red;
+}
+.choicecontainer img {
+  width: 80px;
+}
+.paperColor {
+  background: linear-gradient(hsl(230, 89%, 62%), hsl(230, 89%, 65%));
+}
+.scissorsColor {
+  background: linear-gradient(hsl(39, 89%, 49%), hsl(40, 84%, 53%));
+}
+.rockColor {
+  background: linear-gradient(hsl(349, 71%, 52%), hsl(349, 70%, 56%));
+}
+
+.activeChoicepaper {
+  animation: activeChoicePaper 1.2s;
+  animation-fill-mode: forwards;
+}
+@keyframes activeChoicePaper {
+  0% {
+    top: 120px;
+    left: 150px;
+  }
+  50% {
+    top: 220px;
+    left: 300px;
+  }
+  100% {
+    top: 260px;
+    left: 50px;
+  }
+}
+.activeChoicescissors {
+  animation: activeChoiceScissors 1.2s;
+  animation-fill-mode: forwards;
+}
+@keyframes activeChoiceScissors {
+  0% {
+    top: 120px;
+    left: 450px;
+  }
+  50% {
+    top: 220px;
+    left: 300px;
+  }
+  100% {
+    top: 260px;
+    left: 50px;
+  }
+}
+.activeChoicerock {
+  animation: activeChoiceRock 1.2s;
+  animation-fill-mode: forwards;
+}
+@keyframes activeChoiceRock {
+  0% {
+    top: 360px;
+  }
+  50% {
+    top: 220px;
+    left: 300px;
+  }
+  100% {
+    top: 260px;
+    left: 50px;
+  }
+}
+
+.fadeOut {
+  animation: fadeOut 0.4s;
+  animation-fill-mode: forwards;
+}
+
+@keyframes fadeOut {
+  0% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+    display: none;
+  }
+}
+
+.fadeIn1 {
+  animation: fadeIn1 1s;
+  animation-fill-mode: forwards;
+  animation-delay: 2.2s;
+}
+
+@keyframes fadeIn1 {
+  0% {
+    opacity: 0;
+    visibility: visible;
+  }
+  100% {
+    opacity: 1;
+    visibility: visible;
+  }
+}
+.fadeIn2 {
+  animation: fadeIn2 1s;
+  animation-fill-mode: forwards;
+  animation-delay: 2.2s;
+}
+
+@keyframes fadeIn2 {
+  0% {
+    opacity: 0;
+    visibility: visible;
+  }
+  100% {
+    opacity: 1;
+    visibility: visible;
+  }
+}
+.fadeIn3 {
+  animation: fadeIn3 0.4s;
+  animation-fill-mode: forwards;
+  animation-delay: 1.2s;
+}
+
+@keyframes fadeIn3 {
+  0% {
+    opacity: 0;
+    visibility: visible;
+  }
+  100% {
+    opacity: 1;
+    visibility: visible;
+  }
+}
+
+.fadeIn4 {
+  animation: fadeIn4 0.4s;
+  animation-fill-mode: forwards;
+  animation-delay: 1.2s;
+}
+
+@keyframes fadeIn4 {
+  0% {
+    opacity: 0;
+    visibility: visible;
+  }
+  100% {
+    opacity: 1;
+    visibility: visible;
+  }
+}
+
+.cpuchoice {
+  top: 260px;
+  right: 50px;
+  opacity: 0;
+}
+
+.picks {
+  position: absolute;
+  display: flex;
+  top: 40%;
+  gap: 360px;
+  font-size: 16px;
+  color: white;
+  visibility: hidden;
+}
+.house {
+  translate: 24px 0px;
+}
+.cpuchoiceshadow {
+  top: 260px;
+  right: 50px;
+  opacity: 0;
+  position: absolute;
+  background: #16213d;
+  z-index: -1;
+}
+
+@media screen and (max-width: 770px) {
+  .topcontainer {
+    width: 100%;
+  }
+  .rulesModal {
+    width: 100%;
+    height: 100%;
+  }
+  .modalText{
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    margin: 0;
+    margin-top: 40px;
+  }
+  .modalImage{
+    transform: translateY(-50%);
+    top: 50%;
+    width: 90%;
+  }
+  .closeModal{
+    display:none;
+  }
+  .closeModalAlt{
+    display: block;
+    position: absolute;
+    bottom:0;
+    margin: 24px;
+    width: 30px;
+    height: 30px;
+  }
+
+}
