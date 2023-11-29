@@ -63,11 +63,12 @@ function App() {
         (computer === "scissors" && player === "rock")
       ) {
         setResult("You win");
-        setScore(score + 1);
+        setTimeout(() => setScore(score + 1), 2200);
       } else {
         setResult("You lose");
-        setScore(score - 1);
+        setTimeout(() => setScore(score - 1), 2200);
       }
+
       cpuchoice.classList.add(`${computer}Color`);
       picks.classList.add("fadeIn4");
       resultsContainer.classList.add("fadeIn2");
@@ -171,9 +172,13 @@ function App() {
 
         <div className="cpuchoice choice">
           <div className="choicecontainer">
-            {cpuChoice === "rock" && <img src={iconrock} alt="" />}
-            {cpuChoice === "paper" && <img src={iconpaper} alt="" />}
-            {cpuChoice === "scissors" && <img src={iconscissors} alt="" />}
+
+          {cpuChoice === "rock" ? (<img src={iconrock} alt="" /> ): ""}
+            {cpuChoice === "paper" ? (<img src={iconpaper} alt="" /> ): ""}
+            {cpuChoice === "scissors" ? (<img src={iconscissors} alt="" /> ): ""}
+
+
+
           </div>
         </div>
         <div className="cpuchoiceshadow choice"></div>
